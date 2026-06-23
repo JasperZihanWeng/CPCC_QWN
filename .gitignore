@@ -1,0 +1,35 @@
+# Vivado generated project folders
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.gen/
+
+# Vivado generated files
+*.jou
+*.log
+*.str
+*.tmp
+*.backup*
+*.rpt
+*.dcp
+*.bit
+*.bin
+*.ltx
+*.mcs
+*.prm
+*.mmi
+*.wdb
+*.vcd
+*.saif
+*.pb
+*.wcfg
+
+# Simulation generated folders
+xsim.dir/
+
+# OS/editor junk
+.DS_Store
+.vscode/
+.idea/
