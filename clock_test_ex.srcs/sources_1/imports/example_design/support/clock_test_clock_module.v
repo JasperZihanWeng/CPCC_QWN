@@ -203,13 +203,14 @@ module clock_test_CLOCK_MODULE #
    (.O   (CLK1_OUT),
     .I   (clkout1));
 
-  //BUFG clkout2_buf
-  // (.O   (CLK2_OUT),
-  //  .I   (clkout2));
+  // B10 QWN: CLK2 is the 625 MHz OSERDES serial clock for the lane-0
+  // payload marker. It must remain phase-related to CLK0_OUT (156.25 MHz).
+  BUFG clkout2_buf
+   (.O   (CLK2_OUT),
+    .I   (clkout2));
 
   //BUFG clkout3_buf
   // (.O   (CLK3_OUT),
   //  .I   (clkout3));
- assign CLK2_OUT = 1'b0;
  assign CLK3_OUT = 1'b0;
 endmodule

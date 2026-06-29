@@ -113,3 +113,11 @@ set_property IOSTANDARD  LVCMOS18 [get_ports TX_PAYLOAD_REF]
 # edge of the jitter figure (N41 - H31), so its ramp matters just as much.
 set_property SLEW  FAST [get_ports TX_PAYLOAD_REF]
 set_property DRIVE 16   [get_ports TX_PAYLOAD_REF]
+
+# B10/B11 marker clock pair: CLKDIV=156.25 MHz and CLK=625 MHz come from
+# CLK0/CLK2 of the same GT0 RX MMCM. Match their BUFG insertion delays so the
+# OSERDESE2 internal parallel-to-serial handoff sees the intended phase.
+# This constraint previously lived only in qwn_bufferless.xdc, which is not
+# part of the active project constraint set.
+set_property CLOCK_DELAY_GROUP mk_mark_grp \
+    [get_nets {gt0_rxusrclk2_i gt0_rxusrclk625_i}]
