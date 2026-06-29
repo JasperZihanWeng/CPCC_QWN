@@ -61,6 +61,28 @@
 // PART OF THIS FILE AT ALL TIMES. 
 
 
+/*=============================================================================
+ * *** HAND-EDITED GENERATED FILE -- DO NOT REGENERATE THE clock_test IP ***
+ * Regenerating (or re-running generate_target on) the clock_test wizard IP
+ * rewrites this file and silently DELETES the QWN edits. If you must
+ * regenerate, diff against this copy (a .predoc snapshot sits next to it)
+ * and re-apply every region tagged "B10 QWN" or "(QWN)".
+ *
+ * ROLE: generated support wrapper = GT wrapper + usrclk source + init FSMs.
+ * It sits between the QWN top (qwn_exdes.v) and the GT primitives. QWN
+ * edits carried by THIS file (kept deliberately minimal -- pure plumbing):
+ *  1. B10 QWN: thread gt0_rxusrclk625 from clock_test_gt_usrclk_source's
+ *     GT0_RXUSRCLK625_OUT up to the top -- port (gt0_rxusrclk625_out),
+ *     wire, output assign, and the gt_usrclk_source connection. See the
+ *     warning header in clock_test_gt_usrclk_source.v for WHY (MMCM
+ *     de-cascade; OSERDES marker clock pair from the same VCO).
+ *  2. (QWN) loopback ports: gt0_loopback_in[2:0] threaded to the GT (VIO-
+ *     selectable near-end PMA/PCS loopback for bring-up); gt1/2/3 tied to
+ *     3'b000 = normal operation at the GT instance.
+ * Every other line is wizard boilerplate -- leave it alone; fixes belong in
+ * qwn_exdes.v or the QWN modules, not here.
+ *===========================================================================*/
+
 `timescale 1ns / 1ps
 `define DLY #1
 
@@ -70,7 +92,7 @@
 module clock_test_support #
 (
     parameter EXAMPLE_SIM_GTRESET_SPEEDUP            = "TRUE",     // Simulation setting for GT SecureIP model
-    parameter STABLE_CLOCK_PERIOD                    = 16         //Period of the stable clock driving this state-machine, unit is [ns]
+    parameter STABLE_CLOCK_PERIOD                    = 6         //Period of the stable clock driving this state-machine, unit is [ns]
 
 )
 (
@@ -80,18 +102,22 @@ input           dont_reset_on_data_error_in,
     input  q3_clk1_gtrefclk_pad_n_in,
     input  q3_clk1_gtrefclk_pad_p_in,
 output          gt0_tx_mmcm_lock_out,
+output          gt0_rx_mmcm_lock_out,
 output          gt0_tx_fsm_reset_done_out,
 output          gt0_rx_fsm_reset_done_out,
 input           gt0_data_valid_in,
 output          gt1_tx_mmcm_lock_out,
+output          gt1_rx_mmcm_lock_out,
 output          gt1_tx_fsm_reset_done_out,
 output          gt1_rx_fsm_reset_done_out,
 input           gt1_data_valid_in,
 output          gt2_tx_mmcm_lock_out,
+output          gt2_rx_mmcm_lock_out,
 output          gt2_tx_fsm_reset_done_out,
 output          gt2_rx_fsm_reset_done_out,
 input           gt2_data_valid_in,
 output          gt3_tx_mmcm_lock_out,
+output          gt3_rx_mmcm_lock_out,
 output          gt3_tx_fsm_reset_done_out,
 output          gt3_rx_fsm_reset_done_out,
 input           gt3_data_valid_in,
@@ -100,6 +126,9 @@ input           gt3_data_valid_in,
     output   gt0_txusrclk2_out,
     output   gt0_rxusrclk_out,
     output   gt0_rxusrclk2_out,
+    // B10 QWN edit 1/4 (port): see warning header above; pairs with the
+    // wire, output assign, and gt_usrclk_source connection further down.
+    output   gt0_rxusrclk625_out,   // B10 QWN: gt0 RX MMCM 625 MHz
  
     output   gt1_txusrclk_out,
     output   gt1_txusrclk2_out,
@@ -136,15 +165,16 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt0_eyescandataerror_out,
     input           gt0_eyescantrigger_in,
+    //----------------------- Receive Ports - CDR Ports ------------------------
+    input           gt0_rxcdrhold_in,
+    //--------------------------- Loopback Ports (QWN) -------------------------
+    input   [2:0]   gt0_loopback_in,
     //------------- Receive Ports - Comma Detection and Alignment --------------
     input           gt0_rxslide_in,
     //----------------- Receive Ports - Digital Monitor Ports ------------------
     output  [14:0]  gt0_dmonitorout_out,
     //---------------- Receive Ports - FPGA RX interface Ports -----------------
-    output  [15:0]  gt0_rxdata_out,
-    //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-    output  [1:0]   gt0_rxdisperr_out,
-    output  [1:0]   gt0_rxnotintable_out,
+    output  [63:0]  gt0_rxdata_out,
     //---------------------- Receive Ports - RX AFE Ports ----------------------
     input           gt0_gthrxn_in,
     //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -161,8 +191,6 @@ input           gt3_data_valid_in,
     output          gt0_rxoutclkfabric_out,
     //----------- Receive Ports - RX Initialization and Reset Ports ------------
     input           gt0_gtrxreset_in,
-    //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-    output  [1:0]   gt0_rxcharisk_out,
     //---------------------- Receive Ports -RX AFE Ports -----------------------
     input           gt0_gthrxp_in,
     //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -173,7 +201,7 @@ input           gt3_data_valid_in,
     //------------- Transmit Ports - TX Configurable Driver Ports --------------
     input           gt0_txinhibit_in,
     //---------------- Transmit Ports - TX Data Path interface -----------------
-    input   [15:0]  gt0_txdata_in,
+    input   [63:0]  gt0_txdata_in,
     //-------------- Transmit Ports - TX Driver and OOB signaling --------------
     output          gt0_gthtxn_out,
     output          gt0_gthtxp_out,
@@ -182,8 +210,6 @@ input           gt3_data_valid_in,
     output          gt0_txoutclkpcs_out,
     //----------- Transmit Ports - TX Initialization and Reset Ports -----------
     output          gt0_txresetdone_out,
-    //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-    input   [1:0]   gt0_txcharisk_in,
 
     //GT1  (X1Y13)
     //____________________________CHANNEL PORTS________________________________
@@ -205,15 +231,14 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt1_eyescandataerror_out,
     input           gt1_eyescantrigger_in,
+    //----------------------- Receive Ports - CDR Ports ------------------------
+    input           gt1_rxcdrhold_in,
     //------------- Receive Ports - Comma Detection and Alignment --------------
     input           gt1_rxslide_in,
     //----------------- Receive Ports - Digital Monitor Ports ------------------
     output  [14:0]  gt1_dmonitorout_out,
     //---------------- Receive Ports - FPGA RX interface Ports -----------------
-    output  [15:0]  gt1_rxdata_out,
-    //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-    output  [1:0]   gt1_rxdisperr_out,
-    output  [1:0]   gt1_rxnotintable_out,
+    output  [63:0]  gt1_rxdata_out,
     //---------------------- Receive Ports - RX AFE Ports ----------------------
     input           gt1_gthrxn_in,
     //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -230,8 +255,6 @@ input           gt3_data_valid_in,
     output          gt1_rxoutclkfabric_out,
     //----------- Receive Ports - RX Initialization and Reset Ports ------------
     input           gt1_gtrxreset_in,
-    //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-    output  [1:0]   gt1_rxcharisk_out,
     //---------------------- Receive Ports -RX AFE Ports -----------------------
     input           gt1_gthrxp_in,
     //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -242,7 +265,7 @@ input           gt3_data_valid_in,
     //------------- Transmit Ports - TX Configurable Driver Ports --------------
     input           gt1_txinhibit_in,
     //---------------- Transmit Ports - TX Data Path interface -----------------
-    input   [15:0]  gt1_txdata_in,
+    input   [63:0]  gt1_txdata_in,
     //-------------- Transmit Ports - TX Driver and OOB signaling --------------
     output          gt1_gthtxn_out,
     output          gt1_gthtxp_out,
@@ -251,8 +274,6 @@ input           gt3_data_valid_in,
     output          gt1_txoutclkpcs_out,
     //----------- Transmit Ports - TX Initialization and Reset Ports -----------
     output          gt1_txresetdone_out,
-    //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-    input   [1:0]   gt1_txcharisk_in,
 
     //GT2  (X1Y14)
     //____________________________CHANNEL PORTS________________________________
@@ -274,15 +295,14 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt2_eyescandataerror_out,
     input           gt2_eyescantrigger_in,
+    //----------------------- Receive Ports - CDR Ports ------------------------
+    input           gt2_rxcdrhold_in,
     //------------- Receive Ports - Comma Detection and Alignment --------------
     input           gt2_rxslide_in,
     //----------------- Receive Ports - Digital Monitor Ports ------------------
     output  [14:0]  gt2_dmonitorout_out,
     //---------------- Receive Ports - FPGA RX interface Ports -----------------
-    output  [15:0]  gt2_rxdata_out,
-    //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-    output  [1:0]   gt2_rxdisperr_out,
-    output  [1:0]   gt2_rxnotintable_out,
+    output  [63:0]  gt2_rxdata_out,
     //---------------------- Receive Ports - RX AFE Ports ----------------------
     input           gt2_gthrxn_in,
     //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -299,8 +319,6 @@ input           gt3_data_valid_in,
     output          gt2_rxoutclkfabric_out,
     //----------- Receive Ports - RX Initialization and Reset Ports ------------
     input           gt2_gtrxreset_in,
-    //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-    output  [1:0]   gt2_rxcharisk_out,
     //---------------------- Receive Ports -RX AFE Ports -----------------------
     input           gt2_gthrxp_in,
     //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -311,7 +329,7 @@ input           gt3_data_valid_in,
     //------------- Transmit Ports - TX Configurable Driver Ports --------------
     input           gt2_txinhibit_in,
     //---------------- Transmit Ports - TX Data Path interface -----------------
-    input   [15:0]  gt2_txdata_in,
+    input   [63:0]  gt2_txdata_in,
     //-------------- Transmit Ports - TX Driver and OOB signaling --------------
     output          gt2_gthtxn_out,
     output          gt2_gthtxp_out,
@@ -320,8 +338,6 @@ input           gt3_data_valid_in,
     output          gt2_txoutclkpcs_out,
     //----------- Transmit Ports - TX Initialization and Reset Ports -----------
     output          gt2_txresetdone_out,
-    //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-    input   [1:0]   gt2_txcharisk_in,
 
     //GT3  (X1Y15)
     //____________________________CHANNEL PORTS________________________________
@@ -343,15 +359,14 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt3_eyescandataerror_out,
     input           gt3_eyescantrigger_in,
+    //----------------------- Receive Ports - CDR Ports ------------------------
+    input           gt3_rxcdrhold_in,
     //------------- Receive Ports - Comma Detection and Alignment --------------
     input           gt3_rxslide_in,
     //----------------- Receive Ports - Digital Monitor Ports ------------------
     output  [14:0]  gt3_dmonitorout_out,
     //---------------- Receive Ports - FPGA RX interface Ports -----------------
-    output  [15:0]  gt3_rxdata_out,
-    //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-    output  [1:0]   gt3_rxdisperr_out,
-    output  [1:0]   gt3_rxnotintable_out,
+    output  [63:0]  gt3_rxdata_out,
     //---------------------- Receive Ports - RX AFE Ports ----------------------
     input           gt3_gthrxn_in,
     //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -368,8 +383,6 @@ input           gt3_data_valid_in,
     output          gt3_rxoutclkfabric_out,
     //----------- Receive Ports - RX Initialization and Reset Ports ------------
     input           gt3_gtrxreset_in,
-    //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-    output  [1:0]   gt3_rxcharisk_out,
     //---------------------- Receive Ports -RX AFE Ports -----------------------
     input           gt3_gthrxp_in,
     //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -380,7 +393,7 @@ input           gt3_data_valid_in,
     //------------- Transmit Ports - TX Configurable Driver Ports --------------
     input           gt3_txinhibit_in,
     //---------------- Transmit Ports - TX Data Path interface -----------------
-    input   [15:0]  gt3_txdata_in,
+    input   [63:0]  gt3_txdata_in,
     //-------------- Transmit Ports - TX Driver and OOB signaling --------------
     output          gt3_gthtxn_out,
     output          gt3_gthtxp_out,
@@ -389,8 +402,6 @@ input           gt3_data_valid_in,
     output          gt3_txoutclkpcs_out,
     //----------- Transmit Ports - TX Initialization and Reset Ports -----------
     output          gt3_txresetdone_out,
-    //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-    input   [1:0]   gt3_txcharisk_in,
 
     input  [7:0]  gt0_drpaddr_common_in,
     input  [15:0] gt0_drpdi_common_in,
@@ -401,7 +412,6 @@ input           gt3_data_valid_in,
     //____________________________COMMON PORTS________________________________
     output      gt0_qplllock_out,
     output      gt0_qpllrefclklost_out,
-    output     gt0_qpllreset_out,
     output      gt0_qplloutclk_out,
     output      gt0_qplloutrefclk_out,
     input          sysclk_in
@@ -435,15 +445,14 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     wire            gt0_eyescandataerror_i;
     wire            gt0_eyescantrigger_i;
+    //----------------------- Receive Ports - CDR Ports ------------------------
+    wire            gt0_rxcdrhold_i;
     //------------- Receive Ports - Comma Detection and Alignment --------------
     wire            gt0_rxslide_i;
     //----------------- Receive Ports - Digital Monitor Ports ------------------
     wire    [14:0]  gt0_dmonitorout_i;
     //---------------- Receive Ports - FPGA RX interface Ports -----------------
-    wire    [15:0]  gt0_rxdata_i;
-    //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-    wire    [1:0]   gt0_rxdisperr_i;
-    wire    [1:0]   gt0_rxnotintable_i;
+    wire    [63:0]  gt0_rxdata_i;
     //---------------------- Receive Ports - RX AFE Ports ----------------------
     wire            gt0_gthrxn_i;
     //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -470,8 +479,6 @@ input           gt3_data_valid_in,
     wire            gt0_rxoutclkfabric_i;
     //----------- Receive Ports - RX Initialization and Reset Ports ------------
     wire            gt0_gtrxreset_i;
-    //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-    wire    [1:0]   gt0_rxcharisk_i;
     //---------------------- Receive Ports -RX AFE Ports -----------------------
     wire            gt0_gthrxp_i;
     //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -492,7 +499,7 @@ input           gt3_data_valid_in,
     //------------- Transmit Ports - TX Configurable Driver Ports --------------
     wire            gt0_txinhibit_i;
     //---------------- Transmit Ports - TX Data Path interface -----------------
-    wire    [15:0]  gt0_txdata_i;
+    wire    [63:0]  gt0_txdata_i;
     //-------------- Transmit Ports - TX Driver and OOB signaling --------------
     wire            gt0_gthtxn_i;
     wire            gt0_gthtxp_i;
@@ -502,8 +509,6 @@ input           gt3_data_valid_in,
     wire            gt0_txoutclkpcs_i;
     //----------- Transmit Ports - TX Initialization and Reset Ports -----------
     wire            gt0_txresetdone_i;
-    //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-    wire    [1:0]   gt0_txcharisk_i;
 
     //________________________________________________________________________
     //________________________________________________________________________
@@ -529,15 +534,14 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     wire            gt1_eyescandataerror_i;
     wire            gt1_eyescantrigger_i;
+    //----------------------- Receive Ports - CDR Ports ------------------------
+    wire            gt1_rxcdrhold_i;
     //------------- Receive Ports - Comma Detection and Alignment --------------
     wire            gt1_rxslide_i;
     //----------------- Receive Ports - Digital Monitor Ports ------------------
     wire    [14:0]  gt1_dmonitorout_i;
     //---------------- Receive Ports - FPGA RX interface Ports -----------------
-    wire    [15:0]  gt1_rxdata_i;
-    //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-    wire    [1:0]   gt1_rxdisperr_i;
-    wire    [1:0]   gt1_rxnotintable_i;
+    wire    [63:0]  gt1_rxdata_i;
     //---------------------- Receive Ports - RX AFE Ports ----------------------
     wire            gt1_gthrxn_i;
     //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -564,8 +568,6 @@ input           gt3_data_valid_in,
     wire            gt1_rxoutclkfabric_i;
     //----------- Receive Ports - RX Initialization and Reset Ports ------------
     wire            gt1_gtrxreset_i;
-    //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-    wire    [1:0]   gt1_rxcharisk_i;
     //---------------------- Receive Ports -RX AFE Ports -----------------------
     wire            gt1_gthrxp_i;
     //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -586,7 +588,7 @@ input           gt3_data_valid_in,
     //------------- Transmit Ports - TX Configurable Driver Ports --------------
     wire            gt1_txinhibit_i;
     //---------------- Transmit Ports - TX Data Path interface -----------------
-    wire    [15:0]  gt1_txdata_i;
+    wire    [63:0]  gt1_txdata_i;
     //-------------- Transmit Ports - TX Driver and OOB signaling --------------
     wire            gt1_gthtxn_i;
     wire            gt1_gthtxp_i;
@@ -596,8 +598,6 @@ input           gt3_data_valid_in,
     wire            gt1_txoutclkpcs_i;
     //----------- Transmit Ports - TX Initialization and Reset Ports -----------
     wire            gt1_txresetdone_i;
-    //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-    wire    [1:0]   gt1_txcharisk_i;
 
     //________________________________________________________________________
     //________________________________________________________________________
@@ -623,15 +623,14 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     wire            gt2_eyescandataerror_i;
     wire            gt2_eyescantrigger_i;
+    //----------------------- Receive Ports - CDR Ports ------------------------
+    wire            gt2_rxcdrhold_i;
     //------------- Receive Ports - Comma Detection and Alignment --------------
     wire            gt2_rxslide_i;
     //----------------- Receive Ports - Digital Monitor Ports ------------------
     wire    [14:0]  gt2_dmonitorout_i;
     //---------------- Receive Ports - FPGA RX interface Ports -----------------
-    wire    [15:0]  gt2_rxdata_i;
-    //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-    wire    [1:0]   gt2_rxdisperr_i;
-    wire    [1:0]   gt2_rxnotintable_i;
+    wire    [63:0]  gt2_rxdata_i;
     //---------------------- Receive Ports - RX AFE Ports ----------------------
     wire            gt2_gthrxn_i;
     //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -658,8 +657,6 @@ input           gt3_data_valid_in,
     wire            gt2_rxoutclkfabric_i;
     //----------- Receive Ports - RX Initialization and Reset Ports ------------
     wire            gt2_gtrxreset_i;
-    //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-    wire    [1:0]   gt2_rxcharisk_i;
     //---------------------- Receive Ports -RX AFE Ports -----------------------
     wire            gt2_gthrxp_i;
     //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -680,7 +677,7 @@ input           gt3_data_valid_in,
     //------------- Transmit Ports - TX Configurable Driver Ports --------------
     wire            gt2_txinhibit_i;
     //---------------- Transmit Ports - TX Data Path interface -----------------
-    wire    [15:0]  gt2_txdata_i;
+    wire    [63:0]  gt2_txdata_i;
     //-------------- Transmit Ports - TX Driver and OOB signaling --------------
     wire            gt2_gthtxn_i;
     wire            gt2_gthtxp_i;
@@ -690,8 +687,6 @@ input           gt3_data_valid_in,
     wire            gt2_txoutclkpcs_i;
     //----------- Transmit Ports - TX Initialization and Reset Ports -----------
     wire            gt2_txresetdone_i;
-    //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-    wire    [1:0]   gt2_txcharisk_i;
 
     //________________________________________________________________________
     //________________________________________________________________________
@@ -717,15 +712,14 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     wire            gt3_eyescandataerror_i;
     wire            gt3_eyescantrigger_i;
+    //----------------------- Receive Ports - CDR Ports ------------------------
+    wire            gt3_rxcdrhold_i;
     //------------- Receive Ports - Comma Detection and Alignment --------------
     wire            gt3_rxslide_i;
     //----------------- Receive Ports - Digital Monitor Ports ------------------
     wire    [14:0]  gt3_dmonitorout_i;
     //---------------- Receive Ports - FPGA RX interface Ports -----------------
-    wire    [15:0]  gt3_rxdata_i;
-    //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-    wire    [1:0]   gt3_rxdisperr_i;
-    wire    [1:0]   gt3_rxnotintable_i;
+    wire    [63:0]  gt3_rxdata_i;
     //---------------------- Receive Ports - RX AFE Ports ----------------------
     wire            gt3_gthrxn_i;
     //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -752,8 +746,6 @@ input           gt3_data_valid_in,
     wire            gt3_rxoutclkfabric_i;
     //----------- Receive Ports - RX Initialization and Reset Ports ------------
     wire            gt3_gtrxreset_i;
-    //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-    wire    [1:0]   gt3_rxcharisk_i;
     //---------------------- Receive Ports -RX AFE Ports -----------------------
     wire            gt3_gthrxp_i;
     //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -774,7 +766,7 @@ input           gt3_data_valid_in,
     //------------- Transmit Ports - TX Configurable Driver Ports --------------
     wire            gt3_txinhibit_i;
     //---------------- Transmit Ports - TX Data Path interface -----------------
-    wire    [15:0]  gt3_txdata_i;
+    wire    [63:0]  gt3_txdata_i;
     //-------------- Transmit Ports - TX Driver and OOB signaling --------------
     wire            gt3_gthtxn_i;
     wire            gt3_gthtxp_i;
@@ -784,8 +776,6 @@ input           gt3_data_valid_in,
     wire            gt3_txoutclkpcs_i;
     //----------- Transmit Ports - TX Initialization and Reset Ports -----------
     wire            gt3_txresetdone_i;
-    //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-    wire    [1:0]   gt3_txcharisk_i;
 
    wire  gt0_qplllock_i;
    wire  gt0_qpllrefclklost_i  ;
@@ -840,12 +830,21 @@ input           gt3_data_valid_in,
      wire            gt3_rxusrclk2_i; 
     wire            gt0_txmmcm_lock_i;
     wire            gt0_txmmcm_reset_i;
+    wire            gt0_rxmmcm_lock_i;
+    wire            gt0_rxusrclk625_i;   // B10 QWN  (edit 2/4: feedthrough wire)
+    wire            gt0_rxmmcm_reset_i;
     wire            gt1_txmmcm_lock_i;
     wire            gt1_txmmcm_reset_i;
+    wire            gt1_rxmmcm_lock_i; 
+    wire            gt1_rxmmcm_reset_i;
     wire            gt2_txmmcm_lock_i;
     wire            gt2_txmmcm_reset_i;
+    wire            gt2_rxmmcm_lock_i; 
+    wire            gt2_rxmmcm_reset_i;
     wire            gt3_txmmcm_lock_i;
     wire            gt3_txmmcm_reset_i;
+    wire            gt3_rxmmcm_lock_i; 
+    wire            gt3_rxmmcm_reset_i;
  
     //--------------------------- Reference Clocks ----------------------------
     
@@ -869,16 +868,19 @@ input           gt3_data_valid_in,
     assign tied_to_vcc_vec_i            = 8'hff;
 
     assign  gt0_tx_mmcm_lock_out = gt0_txmmcm_lock_i;
+    assign  gt0_rx_mmcm_lock_out = gt0_rxmmcm_lock_i;
     assign  gt1_tx_mmcm_lock_out = gt1_txmmcm_lock_i;
+    assign  gt1_rx_mmcm_lock_out = gt1_rxmmcm_lock_i;
     assign  gt2_tx_mmcm_lock_out = gt2_txmmcm_lock_i;
+    assign  gt2_rx_mmcm_lock_out = gt2_rxmmcm_lock_i;
     assign  gt3_tx_mmcm_lock_out = gt3_txmmcm_lock_i;
+    assign  gt3_rx_mmcm_lock_out = gt3_rxmmcm_lock_i;
  
 
      assign gt0_qplllock_out  = gt0_qplllock_i;
      assign gt0_qpllrefclklost_out = gt0_qpllrefclklost_i;
      assign gt0_qpllreset_t = commonreset_i | gt0_qpllreset_i;
      
-    assign gt0_qpllreset_out = commonreset_i | gt0_qpllreset_i;
     assign gt0_qplloutclk_out = gt0_qplloutclk_i;
     assign gt0_qplloutrefclk_out = gt0_qplloutrefclk_i;
 
@@ -888,6 +890,7 @@ input           gt3_data_valid_in,
     assign  gt0_txusrclk2_out = gt0_txusrclk2_i;
     assign  gt0_rxusrclk_out = gt0_rxusrclk_i;
     assign  gt0_rxusrclk2_out = gt0_rxusrclk2_i;
+    assign  gt0_rxusrclk625_out = gt0_rxusrclk625_i;   // B10 QWN (edit 3/4)
  
     assign  gt1_txusrclk_out = gt1_txusrclk_i; 
     assign  gt1_txusrclk2_out = gt1_txusrclk2_i;
@@ -915,8 +918,13 @@ input           gt3_data_valid_in,
     .GT0_TX_MMCM_RESET_IN  (gt0_txmmcm_reset_i),
     .GT0_RXUSRCLK_OUT    (gt0_rxusrclk_i),
     .GT0_RXUSRCLK2_OUT   (gt0_rxusrclk2_i),
+    // B10 QWN edit 4/4: the 625 MHz tap off the gt0 RX MMCM (see the
+    // rxoutclk_mmcm1_i comment in clock_test_gt_usrclk_source.v)
+    .GT0_RXUSRCLK625_OUT (gt0_rxusrclk625_i),
     .GT0_RXOUTCLK_IN     (gt0_rxoutclk_i),
  
+    .GT0_RXCLK_LOCK_OUT  (gt0_rxmmcm_lock_i),
+    .GT0_RX_MMCM_RESET_IN  (gt0_rxmmcm_reset_i),
  
     .GT1_TXUSRCLK_OUT    (gt1_txusrclk_i),
     .GT1_TXUSRCLK2_OUT   (gt1_txusrclk2_i),
@@ -927,6 +935,8 @@ input           gt3_data_valid_in,
     .GT1_RXUSRCLK2_OUT   (gt1_rxusrclk2_i),
     .GT1_RXOUTCLK_IN     (gt1_rxoutclk_i),
  
+    .GT1_RXCLK_LOCK_OUT  (gt1_rxmmcm_lock_i),
+    .GT1_RX_MMCM_RESET_IN  (gt1_rxmmcm_reset_i),
  
     .GT2_TXUSRCLK_OUT    (gt2_txusrclk_i),
     .GT2_TXUSRCLK2_OUT   (gt2_txusrclk2_i),
@@ -937,6 +947,8 @@ input           gt3_data_valid_in,
     .GT2_RXUSRCLK2_OUT   (gt2_rxusrclk2_i),
     .GT2_RXOUTCLK_IN     (gt2_rxoutclk_i),
  
+    .GT2_RXCLK_LOCK_OUT  (gt2_rxmmcm_lock_i),
+    .GT2_RX_MMCM_RESET_IN  (gt2_rxmmcm_reset_i),
  
     .GT3_TXUSRCLK_OUT    (gt3_txusrclk_i),
     .GT3_TXUSRCLK2_OUT   (gt3_txusrclk2_i),
@@ -947,6 +959,8 @@ input           gt3_data_valid_in,
     .GT3_RXUSRCLK2_OUT   (gt3_rxusrclk2_i),
     .GT3_RXOUTCLK_IN     (gt3_rxoutclk_i),
  
+    .GT3_RXCLK_LOCK_OUT  (gt3_rxmmcm_lock_i),
+    .GT3_RX_MMCM_RESET_IN  (gt3_rxmmcm_reset_i),
     .Q3_CLK1_GTREFCLK_PAD_N_IN  (q3_clk1_gtrefclk_pad_n_in),
     .Q3_CLK1_GTREFCLK_PAD_P_IN  (q3_clk1_gtrefclk_pad_p_in),
     .Q3_CLK1_GTREFCLK_OUT       (q3_clk1_refclk_i)
@@ -1004,25 +1018,29 @@ assign  sysclk_in_i = sysclk_in;
         .dont_reset_on_data_error_in    (dont_reset_on_data_error_in),
         .gt0_tx_mmcm_lock_in            (gt0_txmmcm_lock_i),
         .gt0_tx_mmcm_reset_out          (gt0_txmmcm_reset_i),
-        .gt0_drp_busy_out               (),
+        .gt0_rx_mmcm_lock_in            (gt0_rxmmcm_lock_i),
+        .gt0_rx_mmcm_reset_out          (gt0_rxmmcm_reset_i),
         .gt0_tx_fsm_reset_done_out      (gt0_tx_fsm_reset_done_out),
         .gt0_rx_fsm_reset_done_out      (gt0_rx_fsm_reset_done_out),
         .gt0_data_valid_in              (gt0_data_valid_in),
         .gt1_tx_mmcm_lock_in            (gt1_txmmcm_lock_i),
         .gt1_tx_mmcm_reset_out          (gt1_txmmcm_reset_i),
-        .gt1_drp_busy_out               (),
+        .gt1_rx_mmcm_lock_in            (gt1_rxmmcm_lock_i),
+        .gt1_rx_mmcm_reset_out          (gt1_rxmmcm_reset_i),
         .gt1_tx_fsm_reset_done_out      (gt1_tx_fsm_reset_done_out),
         .gt1_rx_fsm_reset_done_out      (gt1_rx_fsm_reset_done_out),
         .gt1_data_valid_in              (gt1_data_valid_in),
         .gt2_tx_mmcm_lock_in            (gt2_txmmcm_lock_i),
         .gt2_tx_mmcm_reset_out          (gt2_txmmcm_reset_i),
-        .gt2_drp_busy_out               (),
+        .gt2_rx_mmcm_lock_in            (gt2_rxmmcm_lock_i),
+        .gt2_rx_mmcm_reset_out          (gt2_rxmmcm_reset_i),
         .gt2_tx_fsm_reset_done_out      (gt2_tx_fsm_reset_done_out),
         .gt2_rx_fsm_reset_done_out      (gt2_rx_fsm_reset_done_out),
         .gt2_data_valid_in              (gt2_data_valid_in),
         .gt3_tx_mmcm_lock_in            (gt3_txmmcm_lock_i),
         .gt3_tx_mmcm_reset_out          (gt3_txmmcm_reset_i),
-        .gt3_drp_busy_out               (),
+        .gt3_rx_mmcm_lock_in            (gt3_rxmmcm_lock_i),
+        .gt3_rx_mmcm_reset_out          (gt3_rxmmcm_reset_i),
         .gt3_tx_fsm_reset_done_out      (gt3_tx_fsm_reset_done_out),
         .gt3_rx_fsm_reset_done_out      (gt3_rx_fsm_reset_done_out),
         .gt3_data_valid_in              (gt3_data_valid_in),
@@ -1053,6 +1071,18 @@ assign  sysclk_in_i = sysclk_in;
         //------------------------ RX Margin Analysis Ports ------------------------
         .gt0_eyescandataerror_out       (gt0_eyescandataerror_out), // output wire gt0_eyescandataerror_out
         .gt0_eyescantrigger_in          (gt0_eyescantrigger_in), // input wire gt0_eyescantrigger_in
+        //----------------------- Receive Ports - CDR Ports ------------------------
+        .gt0_rxcdrhold_in               (gt0_rxcdrhold_in), // input wire gt0_rxcdrhold_in
+        //--------------------------- Loopback Ports (QWN) -------------------------
+        // QWN edit: gt0's LOOPBACK[2:0] is runtime-selectable from the top
+        // (VIO probe_out1: 000=normal fiber, 010=near-end PMA = serializer->
+        // CDR without optics, 001=near-end PCS). gt1..3 are hardwired normal.
+        // Bring-up rule of thumb: NE-PCS passing but NE-PMA failing = a
+        // rate/CDR problem, since the PCS path bypasses the analog CDR.
+        .gt0_loopback_in                (gt0_loopback_in), // input wire [2:0] gt0_loopback_in
+        .gt1_loopback_in                (3'b000),
+        .gt2_loopback_in                (3'b000),
+        .gt3_loopback_in                (3'b000),
         //------------- Receive Ports - Comma Detection and Alignment --------------
         .gt0_rxslide_in                 (gt0_rxslide_in), // input wire gt0_rxslide_in
         //----------------- Receive Ports - Digital Monitor Ports ------------------
@@ -1061,10 +1091,7 @@ assign  sysclk_in_i = sysclk_in;
         .gt0_rxusrclk_in                (gt0_rxusrclk_i), // input wire gt0_rxusrclk_i
         .gt0_rxusrclk2_in               (gt0_rxusrclk2_i), // input wire gt0_rxusrclk2_i
         //---------------- Receive Ports - FPGA RX interface Ports -----------------
-        .gt0_rxdata_out                 (gt0_rxdata_out), // output wire [15:0] gt0_rxdata_out
-        //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-        .gt0_rxdisperr_out              (gt0_rxdisperr_out), // output wire [1:0] gt0_rxdisperr_out
-        .gt0_rxnotintable_out           (gt0_rxnotintable_out), // output wire [1:0] gt0_rxnotintable_out
+        .gt0_rxdata_out                 (gt0_rxdata_out), // output wire [63:0] gt0_rxdata_out
         //---------------------- Receive Ports - RX AFE Ports ----------------------
         .gt0_gthrxn_in                  (gt0_gthrxn_in), // input wire gt0_gthrxn_in
         //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -1082,8 +1109,6 @@ assign  sysclk_in_i = sysclk_in;
         .gt0_rxoutclkfabric_out         (gt0_rxoutclkfabric_out), // output wire gt0_rxoutclkfabric_out
         //----------- Receive Ports - RX Initialization and Reset Ports ------------
         .gt0_gtrxreset_in               (gt0_gtrxreset_in), // input wire gt0_gtrxreset_in
-        //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-        .gt0_rxcharisk_out              (gt0_rxcharisk_out), // output wire [1:0] gt0_rxcharisk_out
         //---------------------- Receive Ports -RX AFE Ports -----------------------
         .gt0_gthrxp_in                  (gt0_gthrxp_in), // input wire gt0_gthrxp_in
         //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -1097,7 +1122,7 @@ assign  sysclk_in_i = sysclk_in;
         //------------- Transmit Ports - TX Configurable Driver Ports --------------
         .gt0_txinhibit_in               (gt0_txinhibit_in), // input wire gt0_txinhibit_in
         //---------------- Transmit Ports - TX Data Path interface -----------------
-        .gt0_txdata_in                  (gt0_txdata_in), // input wire [15:0] gt0_txdata_in
+        .gt0_txdata_in                  (gt0_txdata_in), // input wire [63:0] gt0_txdata_in
         //-------------- Transmit Ports - TX Driver and OOB signaling --------------
         .gt0_gthtxn_out                 (gt0_gthtxn_out), // output wire gt0_gthtxn_out
         .gt0_gthtxp_out                 (gt0_gthtxp_out), // output wire gt0_gthtxp_out
@@ -1107,8 +1132,6 @@ assign  sysclk_in_i = sysclk_in;
         .gt0_txoutclkpcs_out            (gt0_txoutclkpcs_out), // output wire gt0_txoutclkpcs_out
         //----------- Transmit Ports - TX Initialization and Reset Ports -----------
         .gt0_txresetdone_out            (gt0_txresetdone_out), // output wire gt0_txresetdone_out
-        //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-        .gt0_txcharisk_in               (gt0_txcharisk_in), // input wire [1:0] gt0_txcharisk_in
 
 
 
@@ -1138,6 +1161,8 @@ assign  sysclk_in_i = sysclk_in;
         //------------------------ RX Margin Analysis Ports ------------------------
         .gt1_eyescandataerror_out       (gt1_eyescandataerror_out), // output wire gt1_eyescandataerror_out
         .gt1_eyescantrigger_in          (gt1_eyescantrigger_in), // input wire gt1_eyescantrigger_in
+        //----------------------- Receive Ports - CDR Ports ------------------------
+        .gt1_rxcdrhold_in               (gt1_rxcdrhold_in), // input wire gt1_rxcdrhold_in
         //------------- Receive Ports - Comma Detection and Alignment --------------
         .gt1_rxslide_in                 (gt1_rxslide_in), // input wire gt1_rxslide_in
         //----------------- Receive Ports - Digital Monitor Ports ------------------
@@ -1146,10 +1171,7 @@ assign  sysclk_in_i = sysclk_in;
         .gt1_rxusrclk_in                (gt1_rxusrclk_i), // input wire gt1_rxusrclk_i
         .gt1_rxusrclk2_in               (gt1_rxusrclk2_i), // input wire gt1_rxusrclk2_i
         //---------------- Receive Ports - FPGA RX interface Ports -----------------
-        .gt1_rxdata_out                 (gt1_rxdata_out), // output wire [15:0] gt1_rxdata_out
-        //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-        .gt1_rxdisperr_out              (gt1_rxdisperr_out), // output wire [1:0] gt1_rxdisperr_out
-        .gt1_rxnotintable_out           (gt1_rxnotintable_out), // output wire [1:0] gt1_rxnotintable_out
+        .gt1_rxdata_out                 (gt1_rxdata_out), // output wire [63:0] gt1_rxdata_out
         //---------------------- Receive Ports - RX AFE Ports ----------------------
         .gt1_gthrxn_in                  (gt1_gthrxn_in), // input wire gt1_gthrxn_in
         //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -1167,8 +1189,6 @@ assign  sysclk_in_i = sysclk_in;
         .gt1_rxoutclkfabric_out         (gt1_rxoutclkfabric_out), // output wire gt1_rxoutclkfabric_out
         //----------- Receive Ports - RX Initialization and Reset Ports ------------
         .gt1_gtrxreset_in               (gt1_gtrxreset_in), // input wire gt1_gtrxreset_in
-        //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-        .gt1_rxcharisk_out              (gt1_rxcharisk_out), // output wire [1:0] gt1_rxcharisk_out
         //---------------------- Receive Ports -RX AFE Ports -----------------------
         .gt1_gthrxp_in                  (gt1_gthrxp_in), // input wire gt1_gthrxp_in
         //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -1182,7 +1202,7 @@ assign  sysclk_in_i = sysclk_in;
         //------------- Transmit Ports - TX Configurable Driver Ports --------------
         .gt1_txinhibit_in               (gt1_txinhibit_in), // input wire gt1_txinhibit_in
         //---------------- Transmit Ports - TX Data Path interface -----------------
-        .gt1_txdata_in                  (gt1_txdata_in), // input wire [15:0] gt1_txdata_in
+        .gt1_txdata_in                  (gt1_txdata_in), // input wire [63:0] gt1_txdata_in
         //-------------- Transmit Ports - TX Driver and OOB signaling --------------
         .gt1_gthtxn_out                 (gt1_gthtxn_out), // output wire gt1_gthtxn_out
         .gt1_gthtxp_out                 (gt1_gthtxp_out), // output wire gt1_gthtxp_out
@@ -1192,8 +1212,6 @@ assign  sysclk_in_i = sysclk_in;
         .gt1_txoutclkpcs_out            (gt1_txoutclkpcs_out), // output wire gt1_txoutclkpcs_out
         //----------- Transmit Ports - TX Initialization and Reset Ports -----------
         .gt1_txresetdone_out            (gt1_txresetdone_out), // output wire gt1_txresetdone_out
-        //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-        .gt1_txcharisk_in               (gt1_txcharisk_in), // input wire [1:0] gt1_txcharisk_in
 
 
 
@@ -1223,6 +1241,8 @@ assign  sysclk_in_i = sysclk_in;
         //------------------------ RX Margin Analysis Ports ------------------------
         .gt2_eyescandataerror_out       (gt2_eyescandataerror_out), // output wire gt2_eyescandataerror_out
         .gt2_eyescantrigger_in          (gt2_eyescantrigger_in), // input wire gt2_eyescantrigger_in
+        //----------------------- Receive Ports - CDR Ports ------------------------
+        .gt2_rxcdrhold_in               (gt2_rxcdrhold_in), // input wire gt2_rxcdrhold_in
         //------------- Receive Ports - Comma Detection and Alignment --------------
         .gt2_rxslide_in                 (gt2_rxslide_in), // input wire gt2_rxslide_in
         //----------------- Receive Ports - Digital Monitor Ports ------------------
@@ -1231,10 +1251,7 @@ assign  sysclk_in_i = sysclk_in;
         .gt2_rxusrclk_in                (gt2_rxusrclk_i), // input wire gt2_rxusrclk_i
         .gt2_rxusrclk2_in               (gt2_rxusrclk2_i), // input wire gt2_rxusrclk2_i
         //---------------- Receive Ports - FPGA RX interface Ports -----------------
-        .gt2_rxdata_out                 (gt2_rxdata_out), // output wire [15:0] gt2_rxdata_out
-        //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-        .gt2_rxdisperr_out              (gt2_rxdisperr_out), // output wire [1:0] gt2_rxdisperr_out
-        .gt2_rxnotintable_out           (gt2_rxnotintable_out), // output wire [1:0] gt2_rxnotintable_out
+        .gt2_rxdata_out                 (gt2_rxdata_out), // output wire [63:0] gt2_rxdata_out
         //---------------------- Receive Ports - RX AFE Ports ----------------------
         .gt2_gthrxn_in                  (gt2_gthrxn_in), // input wire gt2_gthrxn_in
         //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -1252,8 +1269,6 @@ assign  sysclk_in_i = sysclk_in;
         .gt2_rxoutclkfabric_out         (gt2_rxoutclkfabric_out), // output wire gt2_rxoutclkfabric_out
         //----------- Receive Ports - RX Initialization and Reset Ports ------------
         .gt2_gtrxreset_in               (gt2_gtrxreset_in), // input wire gt2_gtrxreset_in
-        //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-        .gt2_rxcharisk_out              (gt2_rxcharisk_out), // output wire [1:0] gt2_rxcharisk_out
         //---------------------- Receive Ports -RX AFE Ports -----------------------
         .gt2_gthrxp_in                  (gt2_gthrxp_in), // input wire gt2_gthrxp_in
         //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -1267,7 +1282,7 @@ assign  sysclk_in_i = sysclk_in;
         //------------- Transmit Ports - TX Configurable Driver Ports --------------
         .gt2_txinhibit_in               (gt2_txinhibit_in), // input wire gt2_txinhibit_in
         //---------------- Transmit Ports - TX Data Path interface -----------------
-        .gt2_txdata_in                  (gt2_txdata_in), // input wire [15:0] gt2_txdata_in
+        .gt2_txdata_in                  (gt2_txdata_in), // input wire [63:0] gt2_txdata_in
         //-------------- Transmit Ports - TX Driver and OOB signaling --------------
         .gt2_gthtxn_out                 (gt2_gthtxn_out), // output wire gt2_gthtxn_out
         .gt2_gthtxp_out                 (gt2_gthtxp_out), // output wire gt2_gthtxp_out
@@ -1277,8 +1292,6 @@ assign  sysclk_in_i = sysclk_in;
         .gt2_txoutclkpcs_out            (gt2_txoutclkpcs_out), // output wire gt2_txoutclkpcs_out
         //----------- Transmit Ports - TX Initialization and Reset Ports -----------
         .gt2_txresetdone_out            (gt2_txresetdone_out), // output wire gt2_txresetdone_out
-        //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-        .gt2_txcharisk_in               (gt2_txcharisk_in), // input wire [1:0] gt2_txcharisk_in
 
 
 
@@ -1308,6 +1321,8 @@ assign  sysclk_in_i = sysclk_in;
         //------------------------ RX Margin Analysis Ports ------------------------
         .gt3_eyescandataerror_out       (gt3_eyescandataerror_out), // output wire gt3_eyescandataerror_out
         .gt3_eyescantrigger_in          (gt3_eyescantrigger_in), // input wire gt3_eyescantrigger_in
+        //----------------------- Receive Ports - CDR Ports ------------------------
+        .gt3_rxcdrhold_in               (gt3_rxcdrhold_in), // input wire gt3_rxcdrhold_in
         //------------- Receive Ports - Comma Detection and Alignment --------------
         .gt3_rxslide_in                 (gt3_rxslide_in), // input wire gt3_rxslide_in
         //----------------- Receive Ports - Digital Monitor Ports ------------------
@@ -1316,10 +1331,7 @@ assign  sysclk_in_i = sysclk_in;
         .gt3_rxusrclk_in                (gt3_rxusrclk_i), // input wire gt3_rxusrclk_i
         .gt3_rxusrclk2_in               (gt3_rxusrclk2_i), // input wire gt3_rxusrclk2_i
         //---------------- Receive Ports - FPGA RX interface Ports -----------------
-        .gt3_rxdata_out                 (gt3_rxdata_out), // output wire [15:0] gt3_rxdata_out
-        //---------------- Receive Ports - RX 8B/10B Decoder Ports -----------------
-        .gt3_rxdisperr_out              (gt3_rxdisperr_out), // output wire [1:0] gt3_rxdisperr_out
-        .gt3_rxnotintable_out           (gt3_rxnotintable_out), // output wire [1:0] gt3_rxnotintable_out
+        .gt3_rxdata_out                 (gt3_rxdata_out), // output wire [63:0] gt3_rxdata_out
         //---------------------- Receive Ports - RX AFE Ports ----------------------
         .gt3_gthrxn_in                  (gt3_gthrxn_in), // input wire gt3_gthrxn_in
         //----------------- Receive Ports - RX Buffer Bypass Ports -----------------
@@ -1337,8 +1349,6 @@ assign  sysclk_in_i = sysclk_in;
         .gt3_rxoutclkfabric_out         (gt3_rxoutclkfabric_out), // output wire gt3_rxoutclkfabric_out
         //----------- Receive Ports - RX Initialization and Reset Ports ------------
         .gt3_gtrxreset_in               (gt3_gtrxreset_in), // input wire gt3_gtrxreset_in
-        //----------------- Receive Ports - RX8B/10B Decoder Ports -----------------
-        .gt3_rxcharisk_out              (gt3_rxcharisk_out), // output wire [1:0] gt3_rxcharisk_out
         //---------------------- Receive Ports -RX AFE Ports -----------------------
         .gt3_gthrxp_in                  (gt3_gthrxp_in), // input wire gt3_gthrxp_in
         //------------ Receive Ports -RX Initialization and Reset Ports ------------
@@ -1352,7 +1362,7 @@ assign  sysclk_in_i = sysclk_in;
         //------------- Transmit Ports - TX Configurable Driver Ports --------------
         .gt3_txinhibit_in               (gt3_txinhibit_in), // input wire gt3_txinhibit_in
         //---------------- Transmit Ports - TX Data Path interface -----------------
-        .gt3_txdata_in                  (gt3_txdata_in), // input wire [15:0] gt3_txdata_in
+        .gt3_txdata_in                  (gt3_txdata_in), // input wire [63:0] gt3_txdata_in
         //-------------- Transmit Ports - TX Driver and OOB signaling --------------
         .gt3_gthtxn_out                 (gt3_gthtxn_out), // output wire gt3_gthtxn_out
         .gt3_gthtxp_out                 (gt3_gthtxp_out), // output wire gt3_gthtxp_out
@@ -1362,8 +1372,6 @@ assign  sysclk_in_i = sysclk_in;
         .gt3_txoutclkpcs_out            (gt3_txoutclkpcs_out), // output wire gt3_txoutclkpcs_out
         //----------- Transmit Ports - TX Initialization and Reset Ports -----------
         .gt3_txresetdone_out            (gt3_txresetdone_out), // output wire gt3_txresetdone_out
-        //--------- Transmit Transmit Ports - 8b10b Encoder Control Ports ----------
-        .gt3_txcharisk_in               (gt3_txcharisk_in), // input wire [1:0] gt3_txcharisk_in
 
 
 

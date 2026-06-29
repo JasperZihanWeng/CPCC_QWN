@@ -73,25 +73,14 @@ module clock_test_GT_FRAME_CHECK #
     parameter   RXCTRL_WIDTH             =  2,
     parameter   WORDS_IN_BRAM            =  512,
     parameter   CHANBOND_SEQ_LEN         =  1,
-    parameter   COMMA_DOUBLE             =  16'hf628,
     parameter   START_OF_PACKET_CHAR     =  64'h00000000000000fb
 )                            
 (
     // User Interface
     input  wire [(RX_DATA_WIDTH-1):0] RX_DATA_IN,
-    input  wire [(RXCTRL_WIDTH-1):0] RXCTRL_IN,
 
     output reg          RXENPCOMMADET_OUT,
     output reg          RXENMCOMMADET_OUT,
-    output reg          RX_ENCHAN_SYNC_OUT,
-    input  wire         RX_CHANBOND_SEQ_IN,
-
-    // Control Interface
-    input  wire         INC_IN,
-    output wire         INC_OUT,
-    output wire         PATTERN_MATCHB_OUT,
-    input  wire         RESET_ON_ERROR_IN,
-
 
     // Error Monitoring
     output wire [7:0]   ERROR_COUNT_OUT,
@@ -108,8 +97,6 @@ module clock_test_GT_FRAME_CHECK #
 
 //***************************Internal Register Declarations******************** 
 
-reg             reset_on_error_in_r;
-reg             reset_on_error_in_r2;
 (* ASYNC_REG = "TRUE" *) (* keep = "true" *)reg             system_reset_r;
 (* ASYNC_REG = "TRUE" *) (* keep = "true" *)reg             system_reset_r2;
 
@@ -134,13 +121,7 @@ reg     [79:0]  rx_data_ram_r;
     reg     [(RX_DATA_WIDTH-1):0] rx_data_r4;
     reg     [(RX_DATA_WIDTH-1):0] rx_data_r5;
     reg     [(RX_DATA_WIDTH-1):0] rx_data_r6;
-    reg     [(RXCTRL_WIDTH-1):0]  rxctrl_r;
-    reg     [(RXCTRL_WIDTH-1):0]  rxctrl_r2;
-    reg     [(RXCTRL_WIDTH-1):0]  rxctrl_r3;
-
-reg             rx_chanbond_seq_r;
-reg             rx_chanbond_seq_r2;
-reg             rx_chanbond_seq_r3; 
+    reg     [2:0]   sel;
  
     reg             idle_slip_r;
     reg             slip_assert_r;
@@ -149,7 +130,6 @@ reg             rx_chanbond_seq_r3;
     reg     [6:0]   wait_before_slip_r;
     reg     [6:0]   wait_before_init_r;    
  
-    reg     [1:0]   sel;
 //*********************************Wire Declarations***************************
 
     wire    [(RX_DATA_WIDTH-1):0] bram_data_r;
@@ -158,10 +138,6 @@ wire            next_begin_c;
 wire            next_data_error_detected_c;
 wire            next_track_data_c;
 wire            start_of_packet_detected_c;
-wire            chanbondseq_in_data;
-wire            input_to_chanbond_data_i;
-wire            input_to_chanbond_reg_i;
-wire    [(CHANBOND_SEQ_LEN-1):0]  rx_chanbond_reg;
 wire            rxdata_or;
 wire            count_slip_complete_c;
 wire            next_idle_slip_c;
@@ -187,11 +163,6 @@ wire            tied_to_vcc_i;
        system_reset_r <= `DLY SYSTEM_RESET;    
        system_reset_r2 <= `DLY system_reset_r; 
      end   
-    always@(posedge USER_CLK)
-      begin
-       reset_on_error_in_r <= `DLY RESET_ON_ERROR_IN;    
-       reset_on_error_in_r2 <= `DLY reset_on_error_in_r;    
-     end   
 
     //______________________ Register RXDATA once to ease timing ______________   
 
@@ -200,12 +171,6 @@ wire            tied_to_vcc_i;
         rx_data_r  <= `DLY    RX_DATA_IN;
         rx_data_r2 <= `DLY    rx_data_r;
     end 
-
-    always @(posedge USER_CLK)
-    begin
-        rxctrl_r  <= `DLY    RXCTRL_IN;
-    end
-
     //________________________________ State machine __________________________    
     
     // State registers
@@ -242,18 +207,6 @@ wire            tied_to_vcc_i;
 
     //______________________________ Capture incoming data ____________________    
 
-    always @(posedge USER_CLK)
-    begin
-        if(system_reset_r2)    rx_data_r3 <= 'h0;
-        else
-        begin
-            if(sel == 2'b01)
-            begin
-                rx_data_r3   <=  `DLY    {rx_data_r[(RX_DATA_WIDTH/2 - 1):0],rx_data_r2[(RX_DATA_WIDTH-1):RX_DATA_WIDTH/2]};  
-            end
-        else rx_data_r3  <=  `DLY    rx_data_r2;
-        end
-    end
 
     always @(posedge USER_CLK)
     begin
@@ -273,32 +226,8 @@ wire            tied_to_vcc_i;
         end
     end
 
-    always @(posedge USER_CLK)
-    begin
-        if(system_reset_r2)  
-        begin
-            rxctrl_r2      <=  `DLY   'h0;
-            rxctrl_r3      <=  `DLY   'h0;
-        end
-        else
-        begin
-            rxctrl_r2      <=  `DLY   rxctrl_r;
-            rxctrl_r3      <=  `DLY   rxctrl_r2;
-        end
-    end
     assign rx_data_aligned = rx_data_r3;
 
-    //___________________________ Code for Channel bonding ____________________    
-    // code to prevent checking of clock correction sequences for the start of packet char
-    always @(posedge USER_CLK)
-    begin
-        rx_chanbond_seq_r  <=  `DLY    RX_CHANBOND_SEQ_IN;
-        rx_chanbond_seq_r2 <=  `DLY    rx_chanbond_seq_r;
-        rx_chanbond_seq_r3 <=  `DLY    rx_chanbond_seq_r2;
-    end
-    
-    assign input_to_chanbond_reg_i  = rx_chanbond_seq_r2;
-    assign input_to_chanbond_data_i = tied_to_ground_i;
 
 
    //______________ Code for Bit Slipping Logic______________
@@ -349,49 +278,97 @@ wire            tied_to_vcc_i;
         if( (system_reset_r2 == 1'b1) | (rxdata_or == 1'b0) )   begin
           bit_align_r <= 1'b0;
         end else begin
-            if( ({rx_data_r[7:0],rx_data_r2[15:8]} == START_OF_PACKET_CHAR) || (rx_data_r[15:0]== START_OF_PACKET_CHAR) )
+            if( ({rx_data_r[55:0],rx_data_r2[63:56]} == START_OF_PACKET_CHAR) || ({rx_data_r[47:0],rx_data_r2[63:48]} == START_OF_PACKET_CHAR) || ({rx_data_r[39:0],rx_data_r2[63:40]} == START_OF_PACKET_CHAR) || ({rx_data_r[31:0],rx_data_r2[63:32]} == START_OF_PACKET_CHAR) || ({rx_data_r[23:0],rx_data_r2[63:24]} == START_OF_PACKET_CHAR) || ({rx_data_r[15:0],rx_data_r2[63:16]} == START_OF_PACKET_CHAR) || ({rx_data_r[7:0],rx_data_r2[63:8]} == START_OF_PACKET_CHAR) || (rx_data_r[63:0] == START_OF_PACKET_CHAR) )
             begin
                 bit_align_r <= 1'b1;
             end
         end
     end
-
-
-    // In 2 Byte scenario, when align_comma_word=1, Comma can appear on any of the two bytes
-    // The comma is moved to the lower byte so that error checking can start
     always @(posedge USER_CLK)
     begin
-        if(reset_on_error_in_r2 || system_reset_r2)    sel <= 2'b00;
-        else if (begin_r && !rx_chanbond_seq_r)
-        begin
-            // if Comma appears on BYTE0 ..
-            if((rx_data_r[(RX_DATA_WIDTH/2 - 1):0] == START_OF_PACKET_CHAR[7:0]) && rxctrl_r[0])
-                sel <= 2'b00;
-            // if Comma appears on BYTE1 ..            
-            else if((rx_data_r[(RX_DATA_WIDTH-1):RX_DATA_WIDTH/2] == START_OF_PACKET_CHAR[7:0]) && rxctrl_r[1])
+        if(system_reset_r2)    begin
+          sel <= 3'b000;
+        end else begin
+            if({rx_data_r[55:0],rx_data_r2[63:56]} == START_OF_PACKET_CHAR)
             begin
-                sel <= 2'b01;
+                sel <= 3'b111;
             end
-        end      
+            else if({rx_data_r[47:0],rx_data_r2[63:48]} == START_OF_PACKET_CHAR)
+            begin
+                sel <= 3'b110;
+            end
+            else if({rx_data_r[39:0],rx_data_r2[63:40]} == START_OF_PACKET_CHAR)
+            begin
+                sel <= 3'b101;
+            end
+            else if({rx_data_r[31:0],rx_data_r2[63:32]} == START_OF_PACKET_CHAR)
+            begin
+                sel <= 3'b100;
+            end
+            else if({rx_data_r[23:0],rx_data_r2[63:24]} == START_OF_PACKET_CHAR)
+            begin
+                sel <= 3'b011;
+            end
+            else if({rx_data_r[15:0],rx_data_r2[63:16]} == START_OF_PACKET_CHAR)
+            begin
+                sel <= 3'b010;
+            end
+            else if({rx_data_r[7:0],rx_data_r2[63:8]} == START_OF_PACKET_CHAR)
+            begin
+                sel <= 3'b001;
+            end
+            else if(rx_data_r[63:0] == START_OF_PACKET_CHAR)
+            begin
+                sel <= 3'b000;
+            end
+        end
     end
+    always @(posedge USER_CLK)
+        begin
+            if(system_reset_r2)    rx_data_r3 <= 'h0;
+            else
+            begin
+                if(sel == 3'b111)
+                begin
+                    rx_data_r3   <=  `DLY    {rx_data_r[55:0],rx_data_r2[63:56]}; 
+                end
+                else if(sel == 3'b110)
+                begin
+                    rx_data_r3   <=  `DLY    {rx_data_r[47:0],rx_data_r2[63:48]}; 
+ 
+                end
+                else if(sel == 3'b101)
+                begin
+                    rx_data_r3   <=  `DLY    {rx_data_r[39:0],rx_data_r2[63:40]}; 
+ 
+                end
+                else if(sel == 3'b100)
+                begin
+                    rx_data_r3   <=  `DLY    {rx_data_r[31:0],rx_data_r2[63:32]}; 
+ 
+                end
+                else if(sel == 3'b011)
+                begin
+                    rx_data_r3   <=  `DLY    {rx_data_r[23:0],rx_data_r2[63:24]}; 
+ 
+                end
+                else if(sel == 3'b010)
+                begin
+                    rx_data_r3   <=  `DLY    {rx_data_r[15:0],rx_data_r2[63:16]}; 
+ 
+                end
+                else if(sel == 3'b001)
+                begin
+                    rx_data_r3   <=  `DLY    {rx_data_r[7:0],rx_data_r2[63:8]}; 
+ 
+                end
+                else
+                    rx_data_r3  <=  `DLY     rx_data_r2;
+            end
+        end
 
-    //___________________________ Code for Channel bonding ____________________    
-    // code to prevent checking of clock correction sequences for the start of packet char
-    genvar i; 
-    generate
-    for (i=0;i<CHANBOND_SEQ_LEN ;i=i+1)
-    begin:register_chan_seq
-    if(i==0)
-        FD rx_chanbond_reg_0  ( .Q (rx_chanbond_reg[i]), .D (input_to_chanbond_reg_i), .C(USER_CLK));
-    else
-        FD rx_chanbond_reg_i  ( .Q (rx_chanbond_reg[i]), .D (rx_chanbond_reg[i-1]), .C(USER_CLK));
-    end
-    endgenerate
-    
-    assign chanbondseq_in_data = |rx_chanbond_reg || input_to_chanbond_data_i;
+    assign rx_data_has_start_char_c = (rx_data_aligned == START_OF_PACKET_CHAR) ;
 
-
-    assign rx_data_has_start_char_c = (rx_data_aligned[7:0] == START_OF_PACKET_CHAR[7:0]) && !chanbondseq_in_data && (|rxctrl_r3);
 
 
     //_____________________________ Assign output ports _______________________    
@@ -409,14 +386,6 @@ wire            tied_to_vcc_i;
         if(system_reset_r2)  RXENMCOMMADET_OUT   <=  `DLY    1'b0;
         else              RXENMCOMMADET_OUT   <=  `DLY    1'b1;
 
-    assign INC_OUT =  start_of_packet_detected_c;   
-
-    assign PATTERN_MATCHB_OUT =  data_error_detected_r;
-
-    // Drive the enchansync port of the mgt for channel bonding
-    always @(posedge USER_CLK)
-        if(system_reset_r2)  RX_ENCHAN_SYNC_OUT   <=  `DLY    1'b0;
-        else              RX_ENCHAN_SYNC_OUT   <=  `DLY    1'b1;
 
     //___________________________ Check incoming data for errors ______________
          
