@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7vx690tffg1761-2" LaunchTime="1781116722">
+  <File Type="ROUTE-PWR" Name="clock_test_exdes_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="clock_test_exdes.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="clock_test_exdes_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="clock_test_exdes_reports.tcl"/>
+  <File Type="OPT-RQA-PB" Name="clock_test_exdes_rqa_opted.pb"/>
+  <File Type="BITSTR-MMI" Name="clock_test_exdes.mmi"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="clock_test_exdes_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="clock_test_exdes_timing_summary_init.rpt"/>
+  <File Type="OPT-TIMING" Name="clock_test_exdes_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="clock_test_exdes_opt.dcp"/>
+  <File Type="OPT-DRC" Name="clock_test_exdes_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="clock_test_exdes.hwdef"/>
+  <File Type="PWROPT-DCP" Name="clock_test_exdes_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="clock_test_exdes_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="clock_test_exdes_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="clock_test_exdes_placed.dcp"/>
+  <File Type="PLACE-IO" Name="clock_test_exdes_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="clock_test_exdes_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="clock_test_exdes_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="clock_test_exdes_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="clock_test_exdes_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="clock_test_exdes_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="clock_test_exdes_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BIN" Name="clock_test_exdes.bin"/>
+  <File Type="PLACE-TIMING" Name="clock_test_exdes_timing_summary_placed.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="clock_test_exdes_power_routed.rpx"/>
+  <File Type="PLACE-RQA-PB" Name="clock_test_exdes_rqa_placed.pb"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="clock_test_exdes_postplace_pwropt.dcp"/>
+  <File Type="BITSTR-MSK" Name="clock_test_exdes.msk"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="clock_test_exdes_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="clock_test_exdes_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="clock_test_exdes_drc_physopted.rpt"/>
+  <File Type="BITSTR-RBT" Name="clock_test_exdes.rbt"/>
+  <File Type="PHYSOPT-TIMING" Name="clock_test_exdes_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="clock_test_exdes_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="clock_test_exdes_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="clock_test_exdes_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="clock_test_exdes_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="clock_test_exdes_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="clock_test_exdes_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="clock_test_exdes_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="clock_test_exdes_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="clock_test_exdes_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-RQS-PB" Name="clock_test_exdes_rqs_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="clock_test_exdes_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="clock_test_exdes_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="clock_test_exdes_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="clock_test_exdes_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="clock_test_exdes_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="clock_test_exdes_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="clock_test_exdes_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="clock_test_exdes_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="clock_test_exdes_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="clock_test_exdes_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="clock_test_exdes_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="clock_test_exdes_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="clock_test_exdes_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="clock_test_exdes_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="clock_test_exdes_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="clock_test_exdes_bus_skew_postroute_physopted.rpt"/>
+  <File Type="BG-BIT" Name="clock_test_exdes.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="clock_test_exdes_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="clock_test_exdes_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-NKY" Name="clock_test_exdes.nky"/>
+  <File Type="BITSTR-BMM" Name="clock_test_exdes_bd.bmm"/>
+  <File Type="PDI-FILE" Name="clock_test_exdes.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="clock_test_exdes_boot.pdi"/>
+  <File Type="PL-PDI-FILE" Name="clock_test_exdes_pld.pdi"/>
+  <File Type="RCFI_FILE" Name="clock_test_exdes.rcfi"/>
+  <File Type="CFI_FILE" Name="clock_test_exdes.cfi"/>
+  <File Type="RNPI_FILE" Name="clock_test_exdes.rnpi"/>
+  <File Type="NPI_FILE" Name="clock_test_exdes.npi"/>
+  <File Type="RBD_FILE" Name="clock_test_exdes.rbd"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="clock_test_exdes.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="clock_test_exdes.sysdef"/>
+  <File Type="BG-BGN" Name="clock_test_exdes.bgn"/>
+  <File Type="BG-DRC" Name="clock_test_exdes.drc"/>
+  <File Type="RDI-RDI" Name="clock_test_exdes.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="ROUTE-RQS" Name="clock_test_exdes_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="clock_test_exdes_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/support/clock_test_clock_module.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/support/clock_test_common.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/support/clock_test_common_reset.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/support/clock_test_gt_usrclk_source.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/support/clock_test_support.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/dec_8b10b.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/eph_filter.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/gt_reset_on_los.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/mark_odelay.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/mark_oserdes.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/phase_hist.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/qwn_dbg.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/qwn_rx_lane.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/qwn_ttl_rx.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/receiverSwitchStateMachine.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rx_frame_par.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rx_gate.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rx_header.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rx_oversample_cdr_64.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rxcdrhold_ctrl.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/switch_controller.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/tx_word_stream.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/qwn_exdes.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/dark_period_ctrl.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/enc_8b10b.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/qwn_header_rom.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/tx_burst_seq.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/tx_gearbox.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/clock_test_gt_frame_check.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/clock_test_gt_frame_gen.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/example_design/gt_rom_init_rx.dat">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../synthesis_test_proj/synthesis_test_proj.gen/sources_1/ip/clock_test/clock_test/example_design/gt_rom_init_rx.dat"/>
+        <Attr Name="ImportTime" Val="1771203548"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/example_design/gt_rom_init_tx.dat">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../synthesis_test_proj/synthesis_test_proj.gen/sources_1/ip/clock_test/clock_test/example_design/gt_rom_init_tx.dat"/>
+        <Attr Name="ImportTime" Val="1771203548"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/clock_test_tx_startup_fsm.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/clock_test_rx_startup_fsm.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/clock_test_tx_manual_phase_align.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/clock_test_rx_manual_phase_align.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/clock_test_sync_block.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/clock_test_sync_pulse.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/qwn_header.mem">
+      <FileInfo SFType="MIF">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/qwn_tx_words.mem">
+      <FileInfo SFType="MIF">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="clock_test_exdes"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PGENDIR/sources_1/ip/clock_test/clock_test/example_design/clock_test_exdes.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/constrs_1/new/qwn_io_supp.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
+    <Filter Type="Utils"/>
+    <File Path="$PSRCDIR/utils_1/imports/synth_1/clock_test_exdes.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Performance_ExplorePostRoutePhysOpt" Flow="Vivado Implementation 2023"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design">
+      <Option Id="Directive">6</Option>
+    </Step>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design">
+      <Option Id="Directive">8</Option>
+    </Step>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design">
+      <Option Id="Directive">2</Option>
+    </Step>
+    <Step Id="route_design">
+      <Option Id="Directive">8</Option>
+      <Option Id="MoreOptsStr"><![CDATA[-tns_cleanup]]></Option>
+    </Step>
+    <Step Id="post_route_phys_opt_design" EnableStepBool="1">
+      <Option Id="Directive">1</Option>
+    </Step>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="vio_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="ila_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="clock_test"/>
+</GenRun>

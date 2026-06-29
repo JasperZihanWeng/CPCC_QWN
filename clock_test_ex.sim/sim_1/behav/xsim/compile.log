@@ -1,0 +1,52 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/ila_0/sim/ila_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ila_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/ila_1/sim/ila_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ila_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/vio_0/sim/vio_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vio_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_rx_manual_phase_align.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_RX_MANUAL_PHASE_ALIGN
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_sync_pulse.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_sync_pulse
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_tx_manual_phase_align.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_TX_MANUAL_PHASE_ALIGN
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_tx_startup_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_TX_STARTUP_FSM
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_rx_startup_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_RX_STARTUP_FSM
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_init
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test_gt.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_GT
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test_multi_gt.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_multi_gt
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_gtrxreset_seq.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_gtrxreset_seq
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_rxpmarst_seq.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_rxpmarst_seq
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_rxrate_seq.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_rxrate_seq
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_sync_block.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_sync_block
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/support/clock_test_clock_module.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_CLOCK_MODULE
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/support/clock_test_common.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_common
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/support/clock_test_common_reset.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_common_reset
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/clock_test_exdes.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_exdes
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/clock_test_gt_frame_check.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_GT_FRAME_CHECK
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/clock_test_gt_frame_gen.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_GT_FRAME_GEN
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/support/clock_test_gt_usrclk_source.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_GT_USRCLK_SOURCE
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/support/clock_test_support.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_support
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sim_1/imports/simulation/clock_test_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_TB
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

@@ -1,0 +1,48 @@
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot clock_test_TB_behav xil_defaultlib.clock_test_TB xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module unisims_ver.IBUFDS_GTE2
+Compiling module unisims_ver.BUFG
+Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=4.0,C...
+Compiling module xil_defaultlib.clock_test_CLOCK_MODULE(MULT=4.0...
+Compiling module xil_defaultlib.clock_test_GT_USRCLK_SOURCE
+Compiling module unisims_ver.GTHE2_COMMON(BIAS_CFG=64'b010000...
+Compiling module xil_defaultlib.clock_test_common(WRAPPER_SIM_GT...
+Compiling module xil_defaultlib.clock_test_common_reset(STABLE_C...
+Compiling module unisims_ver.GTHE2_CHANNEL(ALIGN_COMMA_ENABLE...
+Compiling module unisims_ver.FDRE_default
+Compiling module unisims_ver.FD
+Compiling module xil_defaultlib.clock_test_sync_block
+Compiling module xil_defaultlib.clock_test_gtrxreset_seq
+Compiling module xil_defaultlib.clock_test_GT(TXSYNC_OVRD_IN=1'b...
+Compiling module xil_defaultlib.clock_test_multi_gt_default
+Compiling module xil_defaultlib.clock_test_TX_STARTUP_FSM(STABLE...
+Compiling module unisims_ver.FDPE(INIT=1'b0)
+Compiling module unisims_ver.FDP(INIT=1'b0)
+Compiling module xil_defaultlib.clock_test_RX_STARTUP_FSM(STABLE...
+Compiling module unisims_ver.FD_2
+Compiling module xil_defaultlib.clock_test_sync_block_2
+Compiling module xil_defaultlib.clock_test_sync_pulse
+Compiling module xil_defaultlib.clock_test_TX_MANUAL_PHASE_ALIGN...
+Compiling module xil_defaultlib.clock_test_RX_MANUAL_PHASE_ALIGN...
+Compiling module xil_defaultlib.clock_test_init_default
+Compiling module xil_defaultlib.clock_test
+Compiling module xil_defaultlib.clock_test_support(EXAMPLE_SIM_G...
+Compiling module unisims_ver.IBUFDS
+Compiling module xil_defaultlib.clock_test_GT_FRAME_GEN
+Compiling module xil_defaultlib.clock_test_GT_FRAME_CHECK(RX_DAT...
+Compiling module xil_defaultlib.vio_0
+Compiling module xil_defaultlib.ila_1
+Compiling module xil_defaultlib.ila_0
+Compiling module xil_defaultlib.clock_test_exdes_default
+Compiling module xil_defaultlib.clock_test_TB
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot clock_test_TB_behav

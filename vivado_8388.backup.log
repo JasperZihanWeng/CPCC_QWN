@@ -1,0 +1,429 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Sun Feb 15 18:59:12 2026
+# Process ID: 8388
+# Current directory: c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex
+# Command line: vivado.exe -notrace -source c:/Users/Kumar Lab/Desktop/Shannon/synthesis_test_proj/synthesis_test_proj.gen/sources_1/ip/clock_test/clock_test_ex.tcl
+# Log file: c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/vivado.log
+# Journal file: c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex\vivado.jou
+# Running On: ECE-OP7010PC2, OS: Windows, CPU Frequency: 2112 MHz, CPU Physical cores: 16, Host memory: 34033 MB
+#-----------------------------------------------------------
+start_gui
+source {c:/Users/Kumar Lab/Desktop/Shannon/synthesis_test_proj/synthesis_test_proj.gen/sources_1/ip/clock_test/clock_test_ex.tcl} -notrace
+INFO: [open_example_project] Creating new example project...
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu116:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu116/1.4/board.xml as part xcku5p-ffvb676-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu116:part0:1.5 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu116/1.5/board.xml as part xcku5p-ffvb676-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu1500:part0:1.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu1500/1.2/board.xml as part xcku115-flvb2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:2.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/2.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.1/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190_newl/production/1.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190_newl/production/1.1/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.6 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.6/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.7 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.7/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu110:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu110/1.4/board.xml as part xcvu190-flgc2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.0/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.3/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.4/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu128:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu128/production/1.0/board.xml as part xcvu37p-fsvh2892-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu129:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu129/production/1.0/board.xml as part xcvu29p-fsga2577-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu1525:part0:1.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu1525/1.3/board.xml as part xcvu9p-fsgd2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/production/1.0/board.xml as part xcve2802-vsvh1760-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.1/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.0/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.1/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_mpsoc:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_mpsoc/1.0/board.xml as part xczu19eg-ffvd1760-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_rfsoc:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_rfsoc/1.0/board.xml as part xczu21dr-ffvd1156-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/production/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/production/1.1/board.xml as part xcvh1582-vsva3697-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.1/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:2.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/2.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.1/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180_newl/production/1.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180_newl/production/1.1/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.1/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/production/1.0/board.xml as part xcvp1802-lsvc4072-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/production/1.1/board.xml as part xcvp1802-lsvc4072-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc702:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zc702/1.4/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zc706/1.4/board.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.3/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.4/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu104:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu104/1.1/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.4/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.5 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.5/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.6 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.6/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.2/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.3/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.4/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1275:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1275/1.0/board.xml as part xczu29dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1285:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1285/1.0/board.xml as part xczu39dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208/production/2.0/board.xml as part xczu48dr-fsvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216/production/2.0/board.xml as part xczu49dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.2/data/ip'.
+INFO: [open_example_project] Importing original IP ...
+INFO: [open_example_project] Generating the example project IP ...
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'clock_test'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'clock_test'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'clock_test'...
+INFO: [IP_Flow 19-1686] Generating 'Implementation' target for IP 'clock_test'...
+INFO: [open_example_project] Adding example synthesis HDL files ...
+INFO: [open_example_project] Adding example synthesis miscellaneous files ...
+INFO: [open_example_project] Adding example XDC files ...
+INFO: [open_example_project] Adding simulation HDL files ...
+INFO: [open_example_project] Adding simulation miscellaneous files ...
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'constrs_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'sim_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'sources_1'
+INFO: [open_example_project] Sourcing example extension scripts ...
+INFO: [open_example_project] Sourcing extension script: tcl/set_top.tcl
+INFO: [open_example_project] Sourcing extension script: clock_test/tcl/xci.tcl
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'vio_0'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'vio_0'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'vio_0'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'vio_0'...
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'ila_0'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ila_0'...
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/ila_0/ila_0_ooc.xdc'
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'ila_0'...
+INFO: [IP_Flow 19-1686] Generating 'Implementation' target for IP 'ila_0'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'ila_0'...
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'ila_1'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'ila_1'...
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/ila_1/ila_1_ooc.xdc'
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'ila_1'...
+INFO: [IP_Flow 19-1686] Generating 'Implementation' target for IP 'ila_1'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'ila_1'...
+INFO: [open_example_project] Rebuilding top IP...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'clock_test'...
+INFO: [exportsim-Tcl-40] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2023.2/tps/boost_1_72_0'
+ERROR: [exportsim-Tcl-11] failed to create the directory (C:/Users/Kumar/xsim): can't create directory "C:/Users/Kumar/xsim": permission denied
+ERROR: [Common 17-39] 'send_msg_id' failed due to earlier errors.
+ERROR: [Common 17-69] Command failed: ERROR: [Common 17-39] 'send_msg_id' failed due to earlier errors.
+
+ERROR: [Common 17-69] Command failed: ERROR: [Common 17-69] Command failed: ERROR: [Common 17-39] 'send_msg_id' failed due to earlier errors.
+
+
+update_compile_order -fileset sources_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: clock_test
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+[Sun Feb 15 21:19:47 2026] Launched vio_0_synth_1, ila_0_synth_1, ila_1_synth_1, clock_test_synth_1, synth_1...
+Run output will be captured here:
+vio_0_synth_1: c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.runs/vio_0_synth_1/runme.log
+ila_0_synth_1: c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.runs/ila_0_synth_1/runme.log
+ila_1_synth_1: c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.runs/ila_1_synth_1/runme.log
+clock_test_synth_1: c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.runs/clock_test_synth_1/runme.log
+synth_1: c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.runs/synth_1/runme.log
+[Sun Feb 15 21:19:47 2026] Launched impl_1...
+Run output will be captured here: c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.runs/impl_1/runme.log
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'clock_test_TB'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2023.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'C:/Xilinx/Vivado/2023.2/data/xsim/xsim.ini' copied to run dir:'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'clock_test_TB' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim/gt_rom_init_rx.dat'
+INFO: [SIM-utils-43] Exported 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim/gt_rom_init_tx.dat'
+INFO: [SIM-utils-43] Exported 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim/gt_rom_init_rx.dat'
+INFO: [SIM-utils-43] Exported 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim/gt_rom_init_tx.dat'
+INFO: [SIM-utils-43] Exported 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim/gt_rom_init_rx.dat'
+INFO: [SIM-utils-43] Exported 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim/gt_rom_init_tx.dat'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj clock_test_TB_vlog.prj"
+ECHO is off.
+ECHO is off.
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/ila_0/sim/ila_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ila_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/ila_1/sim/ila_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ila_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/vio_0/sim/vio_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vio_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_rx_manual_phase_align.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_RX_MANUAL_PHASE_ALIGN
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_sync_pulse.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_sync_pulse
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_tx_manual_phase_align.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_TX_MANUAL_PHASE_ALIGN
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_tx_startup_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_TX_STARTUP_FSM
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_rx_startup_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_RX_STARTUP_FSM
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_init
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test_gt.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_GT
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test_multi_gt.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_multi_gt
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_gtrxreset_seq.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_gtrxreset_seq
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_rxpmarst_seq.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_rxpmarst_seq
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_rxrate_seq.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_rxrate_seq
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test/example_design/clock_test_sync_block.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_sync_block
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.gen/sources_1/ip/clock_test/clock_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/support/clock_test_clock_module.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_CLOCK_MODULE
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/support/clock_test_common.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_common
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/support/clock_test_common_reset.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_common_reset
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/clock_test_exdes.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_exdes
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/clock_test_gt_frame_check.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_GT_FRAME_CHECK
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/clock_test_gt_frame_gen.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_GT_FRAME_GEN
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/support/clock_test_gt_usrclk_source.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_GT_USRCLK_SOURCE
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sources_1/imports/example_design/support/clock_test_support.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_support
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/sim_1/imports/simulation/clock_test_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_test_TB
+INFO: [VRFC 10-2263] Analyzing Verilog file "c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '5' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot clock_test_TB_behav xil_defaultlib.clock_test_TB xil_defaultlib.glbl -log elaborate.log"
+ECHO is off.
+ECHO is off.
+Vivado Simulator v2023.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot clock_test_TB_behav xil_defaultlib.clock_test_TB xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module unisims_ver.IBUFDS_GTE2
+Compiling module unisims_ver.BUFG
+Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=4.0,C...
+Compiling module xil_defaultlib.clock_test_CLOCK_MODULE(MULT=4.0...
+Compiling module xil_defaultlib.clock_test_GT_USRCLK_SOURCE
+Compiling module unisims_ver.GTHE2_COMMON(BIAS_CFG=64'b010000...
+Compiling module xil_defaultlib.clock_test_common(WRAPPER_SIM_GT...
+Compiling module xil_defaultlib.clock_test_common_reset(STABLE_C...
+Compiling module unisims_ver.GTHE2_CHANNEL(ALIGN_COMMA_ENABLE...
+Compiling module unisims_ver.FDRE_default
+Compiling module unisims_ver.FD
+Compiling module xil_defaultlib.clock_test_sync_block
+Compiling module xil_defaultlib.clock_test_gtrxreset_seq
+Compiling module xil_defaultlib.clock_test_GT(TXSYNC_OVRD_IN=1'b...
+Compiling module xil_defaultlib.clock_test_multi_gt_default
+Compiling module xil_defaultlib.clock_test_TX_STARTUP_FSM(STABLE...
+Compiling module unisims_ver.FDPE(INIT=1'b0)
+Compiling module unisims_ver.FDP(INIT=1'b0)
+Compiling module xil_defaultlib.clock_test_RX_STARTUP_FSM(STABLE...
+Compiling module unisims_ver.FD_2
+Compiling module xil_defaultlib.clock_test_sync_block_2
+Compiling module xil_defaultlib.clock_test_sync_pulse
+Compiling module xil_defaultlib.clock_test_TX_MANUAL_PHASE_ALIGN...
+Compiling module xil_defaultlib.clock_test_RX_MANUAL_PHASE_ALIGN...
+Compiling module xil_defaultlib.clock_test_init_default
+Compiling module xil_defaultlib.clock_test
+Compiling module xil_defaultlib.clock_test_support(EXAMPLE_SIM_G...
+Compiling module unisims_ver.IBUFDS
+Compiling module xil_defaultlib.clock_test_GT_FRAME_GEN
+Compiling module xil_defaultlib.clock_test_GT_FRAME_CHECK(RX_DAT...
+Compiling module xil_defaultlib.vio_0
+Compiling module xil_defaultlib.ila_1
+Compiling module xil_defaultlib.ila_0
+Compiling module xil_defaultlib.clock_test_exdes_default
+Compiling module xil_defaultlib.clock_test_TB
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot clock_test_TB_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '96' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "clock_test_TB_behav -key {Behavioral:sim_1:Functional:clock_test_TB} -tclbatch {clock_test_TB.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source clock_test_TB.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+Timing checks are not valid
+Timing checks are valid
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'clock_test_TB_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+reset_run synth_1
+INFO: [Project 1-1160] Copying file c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.runs/synth_1/clock_test_exdes.dcp to c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.srcs/utils_1/imports/synth_1 and adding it to utils fileset
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Sun Feb 15 22:11:49 2026] Launched synth_1...
+Run output will be captured here: c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.runs/synth_1/runme.log
+[Sun Feb 15 22:11:49 2026] Launched impl_1...
+Run output will be captured here: c:/Users/Kumar Lab/Desktop/Shannon/clock_test_ex/clock_test_ex.runs/impl_1/runme.log
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_exdes.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_gen.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\clock_test_gt_frame_check.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [c:\Users\Kumar Lab\Desktop\Shannon\clock_test_ex\clock_test_ex.srcs\sources_1\imports\example_design\support\clock_test_support.v:]
+ERROR: [Common 17-180] Spawn failed: No error
+open_hw_manager
